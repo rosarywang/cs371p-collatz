@@ -1,0 +1,35 @@
+commit 909e854ef553184528eb46745b460d1f40117313
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 21:02:36 2016 -0600
+
+    make test
+
+commit 16ead47646661791a4aa8f7d7e5dcc5782d0ffdf
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 20:59:59 2016 -0600
+
+    copy files from public repo, this closes #3
+
+commit d3216651f38b7c8018d7221af14809a8ee593e43
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 20:50:10 2016 -0600
+
+    update .travis.yml, this closes #1
+
+commit 20f8190636b3a3929fb66dd200f9ebcf03e2b6ab
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 20:41:25 2016 -0600
+
+    edit .travis.yml
+
+commit dacbc338eaacb5cb1a3623ec9f163384d35649b5
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 20:39:11 2016 -0600
+
+    added .travis.yml
+
+commit aa27f4aa14dc2e1fc3de671d3384764390d6c0f6
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 20:34:28 2016 -0600
+
+    first commit
