@@ -13,6 +13,7 @@
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
+#include <tr1/unordered_map>
 
 #include "Collatz.h"
 
@@ -32,17 +33,44 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 // collatz_eval
 // ------------
+
+tr1::unordered_map<int, int> storage;
+
+// int cycle_length (int n, int step) {
+//     // //assert(n > 0);
+//     if(storage[n]!=0)
+//         return storage[n]+step-1;
+//     if(n>1)
+//     {
+//         if ((n % 2) == 0)
+//             step = (cycle_length((n/2),step+1));
+//         else
+//             step = (cycle_length(((3 * n)+1),step+1));
+
+//     }
+//     return step;
+//     //assert(c > 0);
+//     }
+
 int cycle_length (int n) {
-    //assert(n > 0);
-    int c = 1;
-    while (n > 1) {
+    // //assert(n > 0);
+    if(storage[n]!=0)
+        return storage[n];
+    int step = 1;
+    if(n>1)
+    {
         if ((n % 2) == 0)
-            n = (n / 2);
+            step += (cycle_length(n/2));
         else
-            n = (3 * n) + 1;
-        ++c;}
+            step += (cycle_length((3 * n)+1));
+
+    }
+    if(storage[n]==0)
+        storage[n]=step;
+    return step;
     //assert(c > 0);
-    return c;}
+    }
+
 
 int collatz_eval (int i, int j) {
     // <your code>
@@ -51,6 +79,8 @@ int collatz_eval (int i, int j) {
     //assert(i <= 1000000);
     //assert(j <= 1000000);
     //assert(i <= j);
+    
+
     int n = 0;
     if(j < i){
         int t = j;
