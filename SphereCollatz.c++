@@ -1,20 +1,7 @@
-// ----------------------------
-// projects/collatz/Collatz.c++
-// Copyright (C) 2016
-// Glenn P. Downing
-// ----------------------------
-
-// --------
-// includes
-// --------
-
-//#include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
-
-#include "Collatz.h"
 
 using namespace std;
 
@@ -33,7 +20,6 @@ pair<int, int> collatz_read (const string& s) {
 // collatz_eval
 // ------------
 int cycle_length (int n) {
-    //assert(n > 0);
     int c = 1;
     while (n > 1) {
         if ((n % 2) == 0)
@@ -41,16 +27,10 @@ int cycle_length (int n) {
         else
             n = (3 * n) + 1;
         ++c;}
-    //assert(c > 0);
     return c;}
 
 int collatz_eval (int i, int j) {
-    // <your code>
-    //assert(i > 0);
-    //assert(j > 0);
-    //assert(i <= 1000000);
-    //assert(j <= 1000000);
-    //assert(i <= j);
+    
     int n = 0;
     if(j < i){
         int t = j;
@@ -63,7 +43,7 @@ int collatz_eval (int i, int j) {
         int t = cycle_length(p);
         if(t > n)
             n = t;}
-    //assert(n > 0);
+        
     return n;}
 
 // -------------
@@ -85,3 +65,12 @@ void collatz_solve (istream& r, ostream& w) {
         const int            j = p.second;
         const int            v = collatz_eval(i, j);
         collatz_print(w, i, j, v);}}
+
+// ----
+// main
+// ----
+
+int main () {
+    collatz_solve(cin, cout);
+    return 0;}
+
