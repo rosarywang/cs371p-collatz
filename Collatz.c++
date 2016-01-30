@@ -48,8 +48,8 @@ int collatz_eval (int i, int j) {
     // <your code>
     assert(i > 0);
     assert(j > 0);
-    assert(i < 1000000);
-    assert(j < 1000000);
+    assert(i <= 1000000);
+    assert(j <= 1000000);
     assert(i <= j);
     
     int n = 0;

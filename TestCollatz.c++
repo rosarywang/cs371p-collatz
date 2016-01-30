@@ -29,11 +29,29 @@ using namespace std;
 // read
 // ----
 
-TEST(CollatzFixture, read) {
+TEST(CollatzFixture, read_1) {
     string s("1 10\n");
     const pair<int, int> p = collatz_read(s);
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
+
+TEST(CollatzFixture, read_2) {
+    string s("100 200\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ(100, p.first);
+    ASSERT_EQ(200, p.second);}
+
+TEST(CollatzFixture, read_3) {
+    string s("201 210\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ(201, p.first);
+    ASSERT_EQ(210, p.second);}
+
+TEST(CollatzFixture, read_4) {
+    string s("900 1000\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ( 900, p.first);
+    ASSERT_EQ(1000, p.second);}
 
 // ----
 // eval
@@ -87,20 +105,41 @@ TEST(CollatzFixture, eval_11) {
 // print
 // -----
 
-TEST(CollatzFixture, print) {
+TEST(CollatzFixture, print_1) {
     ostringstream w;
     collatz_print(w, 1, 10, 20);
     ASSERT_EQ("1 10 20\n", w.str());}
+
+TEST(CollatzFixture, print_2) {
+    ostringstream w;
+    collatz_print(w, 100, 200, 125);
+    ASSERT_EQ("100 200 125\n", w.str());}
+
+TEST(CollatzFixture, print_3) {
+    ostringstream w;
+    collatz_print(w, 201, 210, 89);
+    ASSERT_EQ("201 210 89\n", w.str());}
+
+TEST(CollatzFixture, print_4) {
+    ostringstream w;
+    collatz_print(w, 900, 1000, 174);
+    ASSERT_EQ("900 1000 174\n", w.str());}
 
 // -----
 // solve
 // -----
 
-TEST(CollatzFixture, solve) {
-    istringstream r("1 10\n100 200\n201 210\n900 1000\n");
+TEST(CollatzFixture, solve_1) {
+    istringstream r("1 10\n100 200\n201 210\n900 1000\n1 1\n");
     ostringstream w;
     collatz_solve(r, w);
-    ASSERT_EQ("1 10 20\n100 200 125\n201 210 89\n900 1000 174\n", w.str());}
+    ASSERT_EQ("1 10 20\n100 200 125\n201 210 89\n900 1000 174\n1 1 1\n", w.str());}
+
+TEST(CollatzFixture, solve_2) {
+    istringstream r("1 2\n2 3\n10 20\n10 14\n21 31\n");
+    ostringstream w;
+    collatz_solve(r, w);
+    ASSERT_EQ("1 2 2\n2 3 8\n10 20 21\n10 14 18\n21 31 112\n", w.str());}
 
 /*
 % g++ -fprofile-arcs -ftest-coverage -pedantic -std=c++11 -Wall Collatz.c++ TestCollatz.c++ -o TestCollatz -lgtest -lgtest_main -lpthread
