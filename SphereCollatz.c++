@@ -21,21 +21,44 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 // collatz_eval
 // ------------
+tr1::unordered_map<int, int> storage;
+bool arr[1000000] = {false};
 
+// int cycle_length (int n, int step) {
+//     // //assert(n > 0);
+//     if(storage[n]!=0)
+//         return storage[n]+step-1;
+//     if(n>1)
+//     {
+//         if ((n % 2) == 0)
+//             step = (cycle_length((n/2),step+1));
+//         else
+//             step = (cycle_length(((3 * n)+1),step+1));
+
+//     }
+//     return step;
+//     //assert(c > 0);
+//     }
 
 int cycle_length (int n) {
-    //assert(n > 0);
-    int c = 1;
-    while (n > 1) {
+    // //assert(n > 0);
+    if(n<1000000 && arr[n-1])
+        return storage[n];
+    int step = 1;
+    if(n>1)
+    {
         if ((n % 2) == 0)
-            n = (n / 2);
+            step += (cycle_length(n/2));
         else
-            n = (3 * n) + 1;
-        ++c;}
-    //assert(c > 0);
-    return c;}
+            step += (cycle_length((3 * n)+1));
 
-tr1::unordered_map<int, int> storage;
+    }
+    if(n<1000000 && arr[n-1]==false)
+        storage[n]=step;
+    return step;
+    //assert(c > 0);
+    }
+
 
 int collatz_eval (int i, int j) {
     // <your code>
@@ -44,7 +67,6 @@ int collatz_eval (int i, int j) {
     //assert(i <= 1000000);
     //assert(j <= 1000000);
     //assert(i <= j);
-    //bool arr[1000000] = {false};
     
 
     int n = 0;
@@ -56,16 +78,9 @@ int collatz_eval (int i, int j) {
     if(i > m)
         m = i;
     for(int p = m; p <= j; p++){
-        int t = 0;
-        if(storage[p]!=0){
-            t = storage[p];
-        }
-        else{
-            t = cycle_length(p);
-            storage[p]=t;
-            }
+        int t = cycle_length(p);
         if(t > n)
-                n = t;}
+            n = t;}
     //assert(n > 0);
     return n;}
 
