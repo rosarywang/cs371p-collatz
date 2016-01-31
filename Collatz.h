@@ -14,6 +14,7 @@
 #include <iostream> // istream, ostream
 #include <string>   // string
 #include <utility>  // pair
+#include <tr1/unordered_map>
 
 using namespace std;
 
