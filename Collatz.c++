@@ -35,27 +35,10 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 tr1::unordered_map<int, int> storage;
 
-// int cycle_length (int n, int step) {
-//     // //assert(n > 0);
-//     if(storage[n]!=0)
-//         return storage[n]+step-1;
-//     if(n>1)
-//     {
-//         if ((n % 2) == 0)
-//             step = (cycle_length((n/2),step+1));
-//         else
-//             step = (cycle_length(((3 * n)+1),step+1));
-
-//     }
-//     return step;
-//     //assert(c > 0);
-//     }
-
 int cycle_length (int n) {
     // //assert(n > 0);
-    auto iter = storage.find(n);
-    if(iter!=storage.end())
-        return iter->second;
+   if(storage.count(n)>0)
+        return storage[n];
     int step = 1;
     if(n>1)
     {
@@ -65,7 +48,7 @@ int cycle_length (int n) {
             step += (cycle_length((3 * n)+1));
 
     }
-    if(iter==storage.end())
+    if(storage.count(n)==0)
     {
         storage.insert({n,step});
     }
