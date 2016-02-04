@@ -56,8 +56,10 @@ int collatz_eval (int i, int j) {
         i = temp;
     } 
 
-    //check if the search space can be reduce by half
-    //save time by not searching for interval that would not contain the max cycle length
+    /*
+      check if the search space can be reduce by half
+      save time by not searching for interval that would not contain the max cycle length
+    */
     int m = (j - i) / 2;
     if(m > i)
         i = m;
@@ -70,9 +72,11 @@ int collatz_eval (int i, int j) {
 
         long q = (long)p;
 
-        //an time space trade oof optimization based on modular restriction
-        //this algorithm allows the program to calculate the value of 3n+1/n/2 5 steps ahead
-        //cut meaningless computation on value that is not the final answer
+        /*
+           an time space trade oof optimization based on modular restriction
+           this algorithm allows the program to calculate the value of 3n+1/n/2 5 steps ahead
+           cut meaningless computation on value that is not the final answer
+        */
         while(q > 32 ) {
             long a = q >> 5;
             long b = q % 32;
@@ -80,14 +84,16 @@ int collatz_eval (int i, int j) {
             step += 5 + c[(int)b];
         }
 
-        //the only cache implemented
-        //tried storing and retrieving cache at other location, but it only slows down the program
+        /*
+           the only cache implemented
+           tried storing and retrieving cache at other location, but it only slows down the program
+        */
         #ifdef CACHE
         step += storage[(int)q] - 1;
         q = 1;
         #endif 
 
-        //if no cache, then return to the old method
+        /*  if no cache, then return to the old method  */
         #ifndef CACHE
         while(q > 1) {
             if((q % 2) == 0) {
