@@ -13,13 +13,13 @@
 #include <sstream>              // istringstream
 #include <string>               // getline, string
 #include <utility>              // make_pair, pair
-#include <tr1/unordered_map>    // unordered_map
 #include <math.h>               // pow
-#include <stdlib.h>     /* abs */
 
 #include "Collatz.h"
 
 using namespace std;
+
+#define CACHE
 
 // ------------
 // collatz_read
@@ -37,72 +37,77 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 
 long c[32] = {0,3,2,2,2,2,2,4,1,4,1,3,2,2,3,4,1,2,3,3,1,1,3,3,2,3,2,4,3,3,4,5};
-    long d[32] = {0,2,1,1,2,2,2,20,1,26,1,10,4,4,13,40,2,5,17,17,2,2,20,20,8,22,8,71,26,26,80,242};
+long d[32] = {0,2,1,1,2,2,2,20,1,26,1,10,4,4,13,40,2,5,17,17,2,2,20,20,8,22,8,71,26,26,80,242};
 
-    //#define CACHE
-
-    #ifdef CACHE
-    int storage[33]= {0,1,2,8,3,6,9,17,4,20,7,15,10,10,18,18,5,13,21,21,8,8,16,16,11,24,11,112,19,19,19,107,6};
-    #endif
+#ifdef CACHE
+int storage[33] = {0,1,2,8,3,6,9,17,4,20,7,15,10,10,18,18,5,13,21,21,8,8,16,16,11,24,11,112,19,19,19,107,6};
+#endif
 
 int collatz_eval (int i, int j) {
-    // assert(i > 0);
-    // assert(j > 0);
-    // assert(i < 1000000);
-    // assert(j < 1000000);  
 
-    // i = abs(i);
-    // j = abs(j);
+    assert(i > 0);
+    assert(j > 0);
+    assert(i <= 1000000);
+    assert(j <= 1000000);  
 
-    int n = -1;
-
-    if(j < i){
-        int t = j;
+    if(j < i) {
+        int temp = j;
         j = i;
-        i = t;} 
+        i = temp;
+    } 
 
+    //check if the search space can be reduce by half
+    //save time by not searching for interval that would not contain the max cycle length
     int m = (j - i) / 2;
-
     if(m > i)
         i = m;
     
-    for(int p = i; p <= j; p++) {
+    int max = -1;
 
-        int t = 1;
-            long q = (long)p;
-            while(q > 1) {
+    for(int p = i; p <= j; ++p) {
 
-                while(q > 32 ) {// && (q % 32) != 0) {
-                    long a = q >> 5;
-                    long b = q % 32;
-                    q=a * (long) pow(3, c[(int)b]) + d[(int)b];
-                    t += 5+c[(int)b];
-                }
-                #ifdef CACHE
-                if(q <= 32)
-                {
-                    t += storage[(int)q]-1;
-                    q = 1;
-                }  
-                else {
-                #endif 
-                    if((q % 2) == 0) {
-                        q = q / 2;
-                        ++t;}
+        int step = 1;
 
-                    else {
-                        q = q + (q >> 1) + 1;
-                        t+=2;}
-                #ifdef CACHE 
-                }
-                               
-                #endif
-            }        
-        if(t > n)
-            n = t;}
+        long q = (long)p;
 
-    // assert(n > 0);
-    return n;}
+        //an time space trade oof optimization based on modular restriction
+        //this algorithm allows the program to calculate the value of 3n+1/n/2 5 steps ahead
+        //cut meaningless computation on value that is not the final answer
+        while(q > 32 ) {
+            long a = q >> 5;
+            long b = q % 32;
+            q = a * (long)pow(3, c[(int)b]) + d[(int)b];
+            step += 5 + c[(int)b];
+        }
+
+        //the only cache implemented
+        //tried storing and retrieving cache at other location, but it only slows down the program
+        #ifdef CACHE
+        step += storage[(int)q] - 1;
+        q = 1;
+        #endif 
+
+        //if no cache, then return to the old method
+        #ifndef CACHE
+        while(q > 1) {
+            if((q % 2) == 0) {
+                q = q / 2;
+                ++step;
+            }
+            else {
+                q = q + (q >> 1) + 1;
+                step += 2;
+            }
+        }
+        #endif
+
+        if(step > max)
+            max = step;
+    }
+
+    assert(max > 0);
+    return max;
+}
     
 // -------------
 // collatz_print

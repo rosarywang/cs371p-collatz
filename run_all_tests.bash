@@ -12,7 +12,7 @@ mkdir -p script-results
 echo "Pulling new tests"
 #git pull
 echo "Testing"
-for input in ./collatz-tests/*-RunCollatz.in;
+for input in /u/msbck263/CS371P/public-repo/collatz-tests/*-RunCollatz.in;
 do
 	output="${input%.in}.out"
 	output="${output##*/}"
@@ -22,10 +22,10 @@ do
 		failed_tests="$failed_tests\n$input (assertion triggered)"
 		continue
 	fi 	
-	diff_output="$(diff -qsZ "./script-results/$output" "./collatz-tests/$output")"
+	diff_output="$(diff -qsZ "./script-results/$output" "/u/msbck263/CS371P/public-repo/collatz-tests/$output")"
 	if [[ $diff_output == *"differ"* ]] 
 	then
-		failed_tests="$failed_tests\n${RED}diff ./script-results/$output ./collatz-tests/$output${NC}"
+		failed_tests="$failed_tests\n${RED}diff ./script-results/$output /u/msbck263/CS371P/public-repo/collatz-tests/$output${NC}"
 	else
 		passed_tests="$passed_tests\n$input"
 	fi

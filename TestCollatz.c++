@@ -101,10 +101,6 @@ TEST(CollatzFixture, eval_11) {
     const int v = collatz_eval(999990, 999999);
     ASSERT_EQ(259, v);}
 
-TEST(CollatzFixture, eval_12) {
-    const int v = collatz_eval(1, 1000000);
-    ASSERT_EQ(525, v);}
-
 // -----
 // print
 // -----
