@@ -36,7 +36,7 @@ pair<int, int> collatz_read (const string& s) {
 // collatz_eval
 // ------------
 
-//tr1::unordered_map<int, int> storage;
+
 long c[32] = {0,3,2,2,2,2,2,4,1,4,1,3,2,2,3,4,1,2,3,3,1,1,3,3,2,3,2,4,3,3,4,5};
 long d[32] = {0,2,1,1,2,2,2,20,1,26,1,10,4,4,13,40,2,5,17,17,2,2,20,20,8,22,8,71,26,26,80,242};
 
@@ -45,6 +45,44 @@ int collatz_eval (int i, int j) {
     // assert(j > 0);
     // assert(i < 1000000);
     // assert(j < 1000000);  
+
+    i = abs(i);
+    j = abs(j);
+
+    tr1::unordered_map<long, int> storage;
+
+    storage[1] = 1;
+    storage[2] = 2;
+    storage[3] = 8;
+    storage[4] = 3;
+    storage[5] = 6;
+    storage[6] = 9;
+    storage[7] = 17;
+    storage[8] = 4;
+    storage[9] = 20;
+    storage[10] = 7;
+    storage[11] = 15;
+    storage[12] = 10;
+    storage[13] = 10;
+    storage[14] = 18;
+    storage[15] = 18;
+    storage[16] = 5;
+    storage[17] = 13;
+    storage[18] = 21;
+    storage[19] = 21;
+    storage[20] = 8;
+    storage[21] = 8;
+    storage[22] = 16;
+    storage[23] = 16;
+    storage[24] = 11;
+    storage[25] = 24;
+    storage[26] = 11;
+    storage[27] = 112;
+    storage[28] = 19;
+    storage[29] = 19;
+    storage[30] = 19;
+    storage[31] = 107;
+    storage[32] = 6;
 
     int n = -1;
 
@@ -62,29 +100,36 @@ int collatz_eval (int i, int j) {
 
         int t = 0;
 
-        //if(storage.count(p) > 0)
-        //    t = storage[p];
+        if(storage.count((long)p) > 0)
+            t = storage[(long)p];
 
-        //else{
+        else{
             t = 1;
             long q = (long)p;
             while(q > 1) {
 
-                while(q > 32 && (q % 32) != 0) {
-                    long a = q >> 5;
-                    long b = q % 32;
-                    q=a * (long) pow(3, c[(int)b]) + d[(int)b];
-                    t += 5+c[(int)b];}
+                if(storage.count(q) > 0)
+                {
+                    t += storage[q]-1;
+                    q = 1;
+                }
+                     
+                else{
+                    while(q > 32 && (q % 32) != 0) {
+                        long a = q >> 5;
+                        long b = q % 32;
+                        q=a * (long) pow(3, c[(int)b]) + d[(int)b];
+                        t += 5+c[(int)b];}
 
-                if((q % 2) == 0) {
-                    q = q / 2;
-                    ++t;}
+                    if((q % 2) == 0) {
+                        q = q / 2;
+                        ++t;}
 
-                else {
-                    q = q + (q >> 1) + 1;
-                    t+=2;}}
+                    else {
+                        q = q + (q >> 1) + 1;
+                        t+=2;}}}
 
-            //storage[p]=t;}
+            storage[(long)p]=t;}
         
         if(t > n)
             n = t;}
