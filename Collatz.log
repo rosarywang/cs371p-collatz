@@ -1,3 +1,197 @@
+commit bd62505095cf98d518923d2f5f618470852ded70
+Merge: eab1f5c 63154cc
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 15:42:39 2016 -0600
+
+    Merge branch 'dev'
+
+commit 63154ccd8de7aa96ac0a369aa3b5ba0a7863791c
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 15:29:19 2016 -0600
+
+    syn SphereCollatz.c++
+
+commit eab1f5cb83941981fc8e02e8988d4d5f01ae24b6
+Merge: be0570a 580f44b
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 15:22:26 2016 -0600
+
+    Merge branch 'dev'
+
+commit 580f44b6013fb31935a3e281fd6ff551da5e8e96
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 15:21:20 2016 -0600
+
+    edit doxygen html
+
+commit dab230cdec6c33e0bfa410a91a66c273d83f425d
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 15:08:54 2016 -0600
+
+    doxygen done right
+
+commit c26a4f92583bb0434eaf299e07111df4f2ab35d7
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 15:03:04 2016 -0600
+
+    make html
+
+commit a0e5882bd41e54d59642c05e107cbab86935e295
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 14:55:53 2016 -0600
+
+    Doxygen
+
+commit be0570ad8899fd2cad6573eba15f2f46b2411f55
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 14:40:35 2016 -0600
+
+    make clean
+
+commit b7fa1558bdefc7e6295887722948bccb7c93cf53
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 14:38:56 2016 -0600
+
+    merge
+
+commit 3c126a903c6d31f5c96c955849844e1fbe5177de
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 14:21:04 2016 -0600
+
+    remove script_result
+
+commit 83d5dd489108eebebde390c2ce5975fa24d42d90
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 14:20:21 2016 -0600
+
+    add #ifdef and change spacing
+
+commit f0d90270e7dca79e770c712a17763d86cc037c0f
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 12:48:15 2016 -0600
+
+    optimize the cache
+
+commit 8652959c90c8bfa8039063af3ca9595b1c0f3d1d
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 09:15:09 2016 -0600
+
+    update collatz-tests
+
+commit 44396df1cbb898e3e6fca35f99d691f4fba5635f
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 02:54:34 2016 -0600
+
+    add simple meta cache, this closes #10, this closes #11
+
+commit ccd97e46127405649a74fa19461773910c4fa993
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 02:26:03 2016 -0600
+
+    hoping to pass travis ci
+
+commit 6cb93e6ac4b8e25b7489e583057b77224affd625
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 02:04:17 2016 -0600
+
+    change int to long to avoid overflow
+
+commit d025d3989f89f5aceadda0cd19f7f03b0353ffa0
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 01:15:41 2016 -0600
+
+    edit a test case
+
+commit 4cf39af2d300892c54587cd3f801f9bfb47eccaa
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 00:06:27 2016 -0600
+
+    move collatz-test directory, change makefile EID
+
+commit 114960fa1ee828a9e51bfd1386de988134b737b6
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Wed Feb 3 23:57:06 2016 -0600
+
+    created 131 acceptance tests, this closes #9, also move merge helper function
+
+commit 67e9fd87f0a121fcdad6851156b436134c879f00
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Wed Feb 3 03:16:48 2016 -0600
+
+    incorporate jump k steps ahead algorithm, closes #15
+
+commit 1fe9cf8a6a481104493cf20ba0a96415848980d5
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Sun Jan 31 03:47:58 2016 -0600
+
+    fixing optimization problem
+
+commit b7313d74bd33f74d8879cd8d17ff89aea2ec09a0
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Sun Jan 31 03:18:13 2016 -0600
+
+    adding lazy cache
+
+commit b4a2a07439e679d0fbca5b8d6bc4b3a4757c0b80
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Sun Jan 31 02:57:51 2016 -0600
+
+    decrease the amount of interval search
+
+commit 55be1b15d17df8932437c985ed0d5f9d3208d081
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Sat Jan 30 16:21:19 2016 -0600
+
+    added dynamic programming and unordered map; wrong answer
+
+commit 68f939ab57367766142ee4a5acfdf9936bce946b
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Sat Jan 30 00:40:24 2016 -0600
+
+    fixed bug, i can be bigger than j, this closes #12
+
+commit 287cfbc229e1203163901da7d3d3c092726fbc0f
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Fri Jan 29 20:54:53 2016 -0600
+
+    update TestCollatz unit tests
+
+commit 44e2653541b420ef941d968815e9c4e3e4bafb9f
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Fri Jan 29 13:43:05 2016 -0600
+
+    implement simple solution, this closes #8
+
+commit 9b100294b6de74a2797a1a22a0b3545306a7cfcb
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Fri Jan 29 12:58:19 2016 -0600
+
+    unit tests added, this closes #7
+
+commit b5d50b3fa2aba5052ebb00e8109ef1ab5293177b
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 22:21:08 2016 -0600
+
+    update unit tests in TestCollatz.c++
+
+commit 4c18b7a48f3806948d00c4c8fd81fb0981470be1
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 21:57:03 2016 -0600
+
+    fixed unit test, this closes #5 #6
+
+commit 5318047d027a92752cc803b5ca0b2d2fa4a053d8
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 21:47:32 2016 -0600
+
+    add .gitignore
+
+commit c2fe25d5a07ebb300acacf178c1fc92e5951f32b
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Jan 28 21:30:18 2016 -0600
+
+    travis ci build, this closes #4, #5
+
 commit 909e854ef553184528eb46745b460d1f40117313
 Author: rosarywang <wangr@mccombs.utexas.edu>
 Date:   Thu Jan 28 21:02:36 2016 -0600
