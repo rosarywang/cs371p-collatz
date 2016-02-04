@@ -1,0 +1,134 @@
+\hypertarget{SphereCollatz_8c_09_09}{\section{Sphere\-Collatz.\-c++ File Reference}
+\label{SphereCollatz_8c_09_09}\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}}
+}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$utility$>$}\\*
+{\ttfamily \#include $<$tr1/unordered\-\_\-map$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{SphereCollatz_8c_09_09_a43fd55aa78bd891ebbd6a450f5eecce4}{C\-A\-C\-H\-E}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+pair$<$ int, int $>$ \hyperlink{SphereCollatz_8c_09_09_a2772f8a734aeab48332eb3b282f991ba}{collatz\-\_\-read} (const string \&s)
+\item 
+int \hyperlink{SphereCollatz_8c_09_09_a0b0d3827a619c18aa4d96b8ee8b1c47d}{collatz\-\_\-eval} (int i, int j)
+\item 
+void \hyperlink{SphereCollatz_8c_09_09_aeda0b7ea3e40e1e7487ccc436f33a559}{collatz\-\_\-print} (ostream \&w, int i, int j, int v)
+\item 
+void \hyperlink{SphereCollatz_8c_09_09_a0ac646d2122741f9a9a52201bf9551cc}{collatz\-\_\-solve} (istream \&r, ostream \&w)
+\item 
+int \hyperlink{SphereCollatz_8c_09_09_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{SphereCollatz_8c_09_09_a9160a09deb1711108372467e0f49b551}{c} \mbox{[}32\mbox{]} = \{0,3,2,2,2,2,2,4,1,4,1,3,2,2,3,4,1,2,3,3,1,1,3,3,2,3,2,4,3,3,4,5\}
+\item 
+long \hyperlink{SphereCollatz_8c_09_09_a12b98f69417e4e2643b390e987acddcb}{d} \mbox{[}32\mbox{]} = \{0,2,1,1,2,2,2,20,1,26,1,10,4,4,13,40,2,5,17,17,2,2,20,20,8,22,8,71,26,26,80,242\}
+\item 
+int \hyperlink{SphereCollatz_8c_09_09_abf138feaaa93a33fa911a7f64e7ac902}{storage} \mbox{[}33\mbox{]} = \{0,1,2,8,3,6,9,17,4,20,7,15,10,10,18,18,5,13,21,21,8,8,16,16,11,24,11,112,19,19,19,107,6\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{SphereCollatz_8c_09_09_a43fd55aa78bd891ebbd6a450f5eecce4}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!C\-A\-C\-H\-E@{C\-A\-C\-H\-E}}
+\index{C\-A\-C\-H\-E@{C\-A\-C\-H\-E}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{C\-A\-C\-H\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-A\-C\-H\-E}}\label{SphereCollatz_8c_09_09_a43fd55aa78bd891ebbd6a450f5eecce4}
+
+
+\subsection{Function Documentation}
+\hypertarget{SphereCollatz_8c_09_09_a0b0d3827a619c18aa4d96b8ee8b1c47d}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!collatz\-\_\-eval@{collatz\-\_\-eval}}
+\index{collatz\-\_\-eval@{collatz\-\_\-eval}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{collatz\-\_\-eval}]{\setlength{\rightskip}{0pt plus 5cm}int collatz\-\_\-eval (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)}}\label{SphereCollatz_8c_09_09_a0b0d3827a619c18aa4d96b8ee8b1c47d}
+
+\begin{DoxyParams}{Parameters}
+{\em i} & the beginning of the range, inclusive \\
+\hline
+{\em j} & the end of the range, inclusive \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the max cycle length of the range \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+\hypertarget{SphereCollatz_8c_09_09_aeda0b7ea3e40e1e7487ccc436f33a559}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!collatz\-\_\-print@{collatz\-\_\-print}}
+\index{collatz\-\_\-print@{collatz\-\_\-print}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{collatz\-\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}void collatz\-\_\-print (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{w, }
+\item[{int}]{i, }
+\item[{int}]{j, }
+\item[{int}]{v}
+\end{DoxyParamCaption}
+)}}\label{SphereCollatz_8c_09_09_aeda0b7ea3e40e1e7487ccc436f33a559}
+print three ints 
+\begin{DoxyParams}{Parameters}
+{\em w} & an ostream \\
+\hline
+{\em i} & the beginning of the range, inclusive \\
+\hline
+{\em j} & the end of the range, inclusive \\
+\hline
+{\em v} & the max cycle length \\
+\hline
+\end{DoxyParams}
+\hypertarget{SphereCollatz_8c_09_09_a2772f8a734aeab48332eb3b282f991ba}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!collatz\-\_\-read@{collatz\-\_\-read}}
+\index{collatz\-\_\-read@{collatz\-\_\-read}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{collatz\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}pair$<$int, int$>$ collatz\-\_\-read (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{s}
+\end{DoxyParamCaption}
+)}}\label{SphereCollatz_8c_09_09_a2772f8a734aeab48332eb3b282f991ba}
+read two ints 
+\begin{DoxyParams}{Parameters}
+{\em s} & a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pair of ints, representing the beginning and end of a range, \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+\hypertarget{SphereCollatz_8c_09_09_a0ac646d2122741f9a9a52201bf9551cc}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!collatz\-\_\-solve@{collatz\-\_\-solve}}
+\index{collatz\-\_\-solve@{collatz\-\_\-solve}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{collatz\-\_\-solve}]{\setlength{\rightskip}{0pt plus 5cm}void collatz\-\_\-solve (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{r, }
+\item[{ostream \&}]{w}
+\end{DoxyParamCaption}
+)}}\label{SphereCollatz_8c_09_09_a0ac646d2122741f9a9a52201bf9551cc}
+
+\begin{DoxyParams}{Parameters}
+{\em r} & an istream \\
+\hline
+{\em w} & an ostream \\
+\hline
+\end{DoxyParams}
+\hypertarget{SphereCollatz_8c_09_09_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!main@{main}}
+\index{main@{main}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{SphereCollatz_8c_09_09_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+\subsection{Variable Documentation}
+\hypertarget{SphereCollatz_8c_09_09_a9160a09deb1711108372467e0f49b551}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!c@{c}}
+\index{c@{c}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{c}]{\setlength{\rightskip}{0pt plus 5cm}long c\mbox{[}32\mbox{]} = \{0,3,2,2,2,2,2,4,1,4,1,3,2,2,3,4,1,2,3,3,1,1,3,3,2,3,2,4,3,3,4,5\}}}\label{SphereCollatz_8c_09_09_a9160a09deb1711108372467e0f49b551}
+\hypertarget{SphereCollatz_8c_09_09_a12b98f69417e4e2643b390e987acddcb}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!d@{d}}
+\index{d@{d}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{d}]{\setlength{\rightskip}{0pt plus 5cm}long d\mbox{[}32\mbox{]} = \{0,2,1,1,2,2,2,20,1,26,1,10,4,4,13,40,2,5,17,17,2,2,20,20,8,22,8,71,26,26,80,242\}}}\label{SphereCollatz_8c_09_09_a12b98f69417e4e2643b390e987acddcb}
+\hypertarget{SphereCollatz_8c_09_09_abf138feaaa93a33fa911a7f64e7ac902}{\index{Sphere\-Collatz.\-c++@{Sphere\-Collatz.\-c++}!storage@{storage}}
+\index{storage@{storage}!SphereCollatz.c++@{Sphere\-Collatz.\-c++}}
+\subsubsection[{storage}]{\setlength{\rightskip}{0pt plus 5cm}int storage\mbox{[}33\mbox{]} = \{0,1,2,8,3,6,9,17,4,20,7,15,10,10,18,18,5,13,21,21,8,8,16,16,11,24,11,112,19,19,19,107,6\}}}\label{SphereCollatz_8c_09_09_abf138feaaa93a33fa911a7f64e7ac902}
