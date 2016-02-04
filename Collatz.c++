@@ -15,6 +15,7 @@
 #include <utility>              // make_pair, pair
 #include <tr1/unordered_map>    // unordered_map
 #include <math.h>               // pow
+#include <stdlib.h>     /* abs */
 
 #include "Collatz.h"
 
@@ -36,8 +37,8 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 
 //tr1::unordered_map<int, int> storage;
-unsigned int c[32] = {0,3,2,2,2,2,2,4,1,4,1,3,2,2,3,4,1,2,3,3,1,1,3,3,2,3,2,4,3,3,4,5};
-unsigned int d[32] = {0,2,1,1,2,2,2,20,1,26,1,10,4,4,13,40,2,5,17,17,2,2,20,20,8,22,8,71,26,26,80,242};
+long c[32] = {0,3,2,2,2,2,2,4,1,4,1,3,2,2,3,4,1,2,3,3,1,1,3,3,2,3,2,4,3,3,4,5};
+long d[32] = {0,2,1,1,2,2,2,20,1,26,1,10,4,4,13,40,2,5,17,17,2,2,20,20,8,22,8,71,26,26,80,242};
 
 int collatz_eval (int i, int j) {
     // assert(i > 0);
@@ -66,14 +67,14 @@ int collatz_eval (int i, int j) {
 
         //else{
             t = 1;
-            unsigned int q = (unsigned int)p;
+            long q = (long)p;
             while(q > 1) {
 
-                // while(q > 32 && (q % 32) != 0) {
-                //     unsigned int a = q >> 5;
-                //     int b = (int)q % 32;
-                //     q=(unsigned int)(a * (unsigned int) pow(3, c[b]) + d[b]);
-                //     t += 5+(int)c[b];}
+                while(q > 32 && (q % 32) != 0) {
+                    long a = q >> 5;
+                    long b = q % 32;
+                    q=a * (long) pow(3, c[(int)b]) + d[(int)b];
+                    t += 5+c[(int)b];}
 
                 if((q % 2) == 0) {
                     q = q / 2;
