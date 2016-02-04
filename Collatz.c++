@@ -38,64 +38,82 @@ pair<int, int> collatz_read (const string& s) {
 //tr1::unordered_map<int, int> storage;
 int c[32] = {0,3,2,2,2,2,2,4,1,4,1,3,2,2,3,4,1,2,3,3,1,1,3,3,2,3,2,4,3,3,4,5};
 int d[32] = {0,2,1,1,2,2,2,20,1,26,1,10,4,4,13,40,2,5,17,17,2,2,20,20,8,22,8,71,26,26,80,242};
-// int s[32] = {0,1,7,2,5,8,16,3,19,6,14,9,9,17,17,4,12,20,20,7,7,15,15,10,23,10,111,18,18,81,106,5};
 
-int cycle_length (int n) {
-    // //assert(n > 0);
-    int step = 1;
-    while(n>1)
-    {
-        while(n > 32 && (n%32) != 0)
-        {
-            int a = n >> 5;
-            int b = n % 32;
-            n=a*(int)pow(3,c[b])+d[b];
-            step += 5+c[b];
-        }
-        if((n % 2) == 0)
-        {
-            n=n/2;
-            ++step;
-        }
-        else
-        {
-            n=n+(n>>1)+1;
-            step+=2;
-        }
-    }
-        
-    return step;
-    //assert(c > 0);
-    }
+// int cycle_length (int n) {
+//     assert(n > 0);
+//     int step = 1;
+//     while(n > 1) {
+
+//         while(n > 32 && (n % 32) != 0) {
+//             int a = n >> 5;
+//             int b = n % 32;
+//             n=a * (int) pow(3, c[b]) + d[b];
+//             step += 5+c[b];}
+
+//         if((n % 2) == 0) {
+//             n = n / 2;
+//             ++step;}
+
+//         else {
+//             n = n + (n >> 1) + 1;
+//             step+=2;}}
+
+//     assert(step > 0);
+//     return step;}
 
 
 int collatz_eval (int i, int j) {
-    //assert(i > 0);
-    //assert(j > 0);
-    //assert(i <= 1000000);
-    //assert(j <= 1000000);
-    //assert(i <= j);   
+    assert(i > 0);
+    assert(j > 0);
+    assert(i < 1000000);
+    assert(j < 1000000);  
+
     int n = -1;
+
     if(j < i){
         int t = j;
         j = i;
         i = t;} 
-    int m = (j-i)/2;
+
+    int m = (j - i) / 2;
+
     if(m > i)
-        i=m;
+        i = m;
     
-    for(int p = i; p <= j; p++){
+    for(int p = i; p <= j; p++) {
+
         int t = 0;
-        // if(storage.count(p)>0)
-        //     t = storage[p];
-        // else{
-                t = cycle_length(p);
-                //storage[p]=t;}
+
+        //if(storage.count(p) > 0)
+        //    t = storage[p];
+
+        //else{
+            t = 1;
+            int q = p;
+            while(q > 1) {
+
+                while(q > 32 && (q % 32) != 0) {
+                    int a = q >> 5;
+                    int b = q % 32;
+                    q=a * (int) pow(3, c[b]) + d[b];
+                    t += 5+c[b];}
+
+                if((q % 2) == 0) {
+                    q = q / 2;
+                    ++t;}
+
+                else {
+                    q = q + (q >> 1) + 1;
+                    t+=2;}}
+
+            //storage[p]=t;}
         
         if(t > n)
             n = t;}
-    //assert(n > 0);
+
+    assert(n > 0);
     return n;}
+    
 // -------------
 // collatz_print
 // -------------
