@@ -1,10 +1,14 @@
+#include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
 #include <math.h>   // pow
+#include <stdlib.h> // abs
 
 using namespace std;
+
+#define CACHE
 
 // ------------
 // collatz_read
@@ -29,10 +33,8 @@ int storage[33] = {0,1,2,8,3,6,9,17,4,20,7,15,10,10,18,18,5,13,21,21,8,8,16,16,1
 
 int collatz_eval (int i, int j) {
 
-    assert(i > 0);
-    assert(j > 0);
-    assert(i <= 1000000);
-    assert(j <= 1000000);  
+    i=abs(i);
+    j=abs(j);
 
     if(j < i) {
         int temp = j;
@@ -65,7 +67,7 @@ int collatz_eval (int i, int j) {
             long a = q >> 5;
             long b = q % 32;
             q = a * (long)pow(3, c[(int)b]) + d[(int)b];
-            step += 5 + c[(int)b];
+            step += 5 + (int)c[(int)b];
         }
 
         /*
@@ -73,8 +75,10 @@ int collatz_eval (int i, int j) {
            tried storing and retrieving cache at other location, but it only slows down the program
         */
         #ifdef CACHE
-        step += storage[(int)q] - 1;
-        q = 1;
+        if(q > 0){
+            step += storage[(int)q] - 1;
+            q = 1;
+        }
         #endif 
 
         /*  if no cache, then return to the old method  */
@@ -95,7 +99,6 @@ int collatz_eval (int i, int j) {
             max = step;
     }
 
-    assert(max > 0);
     return max;
 }
     
@@ -126,4 +129,3 @@ void collatz_solve (istream& r, ostream& w) {
 int main () {
     collatz_solve(cin, cout);
     return 0;}
-

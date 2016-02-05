@@ -81,7 +81,7 @@ int collatz_eval (int i, int j) {
             long a = q >> 5;
             long b = q % 32;
             q = a * (long)pow(3, c[(int)b]) + d[(int)b];
-            step += 5 + c[(int)b];
+            step += 5 + (int)c[(int)b];
         }
 
         /*
@@ -89,8 +89,10 @@ int collatz_eval (int i, int j) {
            tried storing and retrieving cache at other location, but it only slows down the program
         */
         #ifdef CACHE
-        step += storage[(int)q] - 1;
-        q = 1;
+        if(q > 0){
+            step += storage[(int)q] - 1;
+            q = 1;
+        }
         #endif 
 
         /*  if no cache, then return to the old method  */

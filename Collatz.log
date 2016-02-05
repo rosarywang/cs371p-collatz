@@ -1,3 +1,9 @@
+commit c30258e5e275159118ca33c0468a4d9faeb75081
+Author: rosarywang <wangr@mccombs.utexas.edu>
+Date:   Thu Feb 4 17:36:41 2016 -0600
+
+    edited TestCollatz.out
+
 commit bd62505095cf98d518923d2f5f618470852ded70
 Merge: eab1f5c 63154cc
 Author: rosarywang <wangr@mccombs.utexas.edu>
